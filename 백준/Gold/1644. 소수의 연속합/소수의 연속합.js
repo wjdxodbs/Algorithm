@@ -6,7 +6,7 @@ let arr = Array.from({ length: n + 1 }, (_, idx) => idx);
 arr[0] = 0;
 arr[1] = 0;
 
-for (let i = 2; i <= Math.floor(n); i++) {
+for (let i = 2; i <= Math.sqrt(n); i++) {
   for (let j = i * 2; j <= n; j += i) {
     arr[j] = 0;
   }
