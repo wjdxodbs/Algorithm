@@ -3,14 +3,11 @@ const input = fs.readFileSync('/dev/stdin').toString().trim().split('\n');
 
 let [k, l] = input[0].split(' ');
 let arr = input.slice(1);
-let obj = {};
 
-arr.forEach((item, idx) => {
-  obj[item] = idx;
+const set = new Set();
+arr.forEach(id => {
+  if (set.has(id)) set.delete(id);
+  set.add(id);
 });
 
-let result = Object.entries(obj)
-  .sort((a, b) => a[1] - b[1])
-  .map((item) => item[0]);
-
-console.log(result.slice(0, k).join('\n'));
+console.log(Array.from(set).slice(0, k).join('\n'));
