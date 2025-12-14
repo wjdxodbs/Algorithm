@@ -1,9 +1,12 @@
-function solution(arr){
-    let s = [arr[0]];
+function solution(arr)
+{
+    let s = [];
     
-    for (let i = 1; i < arr.length; i++){
-        if(arr[i] !== s[s.length-1]){
-            s.push(arr[i])
+    for(let elm of arr){
+        let l = s.length;
+        
+        if(!l || s[l-1] !== elm){
+            s.push(elm)
         }
     }
     
