@@ -1,18 +1,19 @@
-function solution(s){
-    let stack = []
+function solution(arr){
+    let s = [];
     
-    s.split('').forEach(item=>{
-        if(stack.length===0){
-            stack.push(item)
-            return
-        }
+    if (arr[0]===')'){
+        return false
+    }
+    
+    for (let elm of arr){
+        let l = s.length;
         
-        if(item===')' && stack.at(-1)==='('){
-            stack.pop()
+        if(!l || !(s[l-1]==='(' && elm===')')){
+            s.push(elm)
         } else {
-            stack.push(item)
+            s.pop()
         }
-    })
+    }
     
-    return stack.length===0
+    return !s.length;
 }
