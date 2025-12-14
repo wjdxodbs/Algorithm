@@ -1,20 +1,15 @@
 function solution(priorities, location) {
-    let arr = []
+    let arr = priorities.map((elm, idx)=>({'k':idx===location, 'v': elm}))
     let head1 = 0;
     let head2 = 0;
-    let target = String.fromCharCode(location+65)
-    
-    for (let elm in priorities) {
-        arr.push([String.fromCharCode(+elm+65), priorities[elm]])
-    }
     
     priorities.sort((a,b)=>b-a);
     
     while(arr.length > head1){
-        if(priorities[head2] === arr[head1][1]){
+        if(priorities[head2] === arr[head1]['v']){
             head2++
             
-            if(arr[head1][0] === target){
+            if(arr[head1]['k'] === true){
                 break
             }
         } else {
