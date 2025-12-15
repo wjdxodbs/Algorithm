@@ -1,12 +1,8 @@
 function solution(array, commands) {
-    let result = new Array(commands.length).fill(0);
-    
-    for (let idx = 0; idx < commands.length; idx++){
-        let [i, j, k] = commands[idx];
-        let arr = array.slice(i-1, j);
-        arr.sort((a,b)=>a-b)
-        result[idx] = arr[k-1]
-    }
-    
-    return result
+    return commands.map((command)=>{
+        let [i, j, k] = command;
+        let arr = array.slice(i-1, j).sort((a, b)=>a-b);
+        
+        return arr[k-1]
+    })
 }
