@@ -17,20 +17,20 @@ function solution(numbers) {
     return true;
   };
 
-  const func2 = (num, cnt) => {
+  const func2 = (num) => {
     let a = func1(+num);
     if (a) {
       set.add(num);
     }
 
-    if (cnt === arr.length) {
+    if (num.length === arr.length) {
       return;
     }
 
     arr.forEach((elm, idx) => {
       if (!visited[idx]) {
         visited[idx] = true;
-        func2(num + elm, cnt + 1);
+        func2(num + elm);
         visited[idx] = false;
       }
     });
@@ -39,7 +39,7 @@ function solution(numbers) {
   arr.forEach((elm, idx) => {
     if (elm !== "0") {
       visited[idx] = true;
-      func2(elm, 1);
+      func2(elm);
       visited[idx] = false;
     }
   });
