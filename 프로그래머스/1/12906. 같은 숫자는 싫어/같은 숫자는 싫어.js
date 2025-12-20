@@ -2,11 +2,10 @@ function solution(arr)
 {
     let s = [];
     
-    for(let elm of arr){
-        let l = s.length;
+    for(let i = 0; i < arr.length; i++){
         
-        if(!l || s[l-1] !== elm){
-            s.push(elm)
+        if(arr[i] !== arr[i+1]){
+            s.push(arr[i])
         }
     }
     
