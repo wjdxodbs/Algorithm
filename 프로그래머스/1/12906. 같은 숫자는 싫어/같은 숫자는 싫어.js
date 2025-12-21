@@ -1,10 +1,10 @@
 function solution(arr)
 {
-    let s = [];
+    let s = [arr[0]];
     
-    for(let i = 0; i < arr.length; i++){
+    for(let i = 1; i < arr.length; i++){
         
-        if(arr[i] !== arr[i+1]){
+        if(arr[i] !== arr[i-1]){
             s.push(arr[i])
         }
     }
