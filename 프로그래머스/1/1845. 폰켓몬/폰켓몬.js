@@ -1,7 +1,7 @@
 function solution(nums) {
-    let n = nums.length / 2;
     let set = new Set(nums);
-    let result = Math.min(n, set.size)
+    let arrLen = nums.length / 2;
+    let setLen = set.size;
     
-    return result
+    return arrLen >= setLen ? setLen : arrLen
 }
