@@ -1,18 +1,18 @@
 function solution(participant, completion) {
     let map = new Map();
     
-    for (let i = 0; i < participant.length; i++){
-        let a = participant[i];
-        let b = completion[i]
+    participant.forEach((elm, idx)=>{
+        let cnt1 = map.get(elm) || 0;
+        map.set(elm, cnt1+1)
         
-        map.set(a, (map.get(a)||0)+1)
-        map.set(b, (map.get(b)||0)-1)
-    }
+        let cnt2 = map.get(completion[idx]) || 0;
+        map.set(completion[idx], cnt2-1)
+    })
     
-
-    for (let [k, v] of map){
-        if (v > 0){
-            return k
+    for (let [key, value] of map){
+        if (value > 0) {
+            return key
         }
     }
+    
 }
