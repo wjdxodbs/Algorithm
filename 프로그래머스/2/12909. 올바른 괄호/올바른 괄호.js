@@ -1,19 +1,15 @@
-function solution(arr){
-    let s = [];
+function solution(s){
+    let result = 0;
     
-    if (arr[0]===')'){
-        return false
-    }
-    
-    for (let elm of arr){
-        let l = s.length;
+    for (let i = 0; i < s.length; i++){
+        let num = s[i] === '(' ? 1 : -1
         
-        if(!l || !(s[l-1]==='(' && elm===')')){
-            s.push(elm)
-        } else {
-            s.pop()
+        if (result + num < 0){
+            return false
         }
+        
+        result += num
     }
     
-    return !s.length;
+    return result ? false : true
 }
