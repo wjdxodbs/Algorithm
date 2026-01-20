@@ -1,23 +1,25 @@
 function solution(priorities, location) {
-    let arr = priorities.map((elm, idx)=>({'k':idx===location, 'v': elm}))
-    let head1 = 0;
-    let head2 = 0;
+    let newPriorities = priorities.map((e, i)=>[i, e]);
+    let max = priorities.sort((a, b)=>b-a);
+    let head = 0, result = 0, maxIdx = 0;
     
-    priorities.sort((a,b)=>b-a);
-    
-    while(arr.length > head1){
-        if(priorities[head2] === arr[head1]['v']){
-            head2++
+    while (head < newPriorities.length){
+        let headElm = newPriorities[head]
+        
+        if (headElm[1] === max[maxIdx]){
+            result += 1;
+            maxIdx += 1;
             
-            if(arr[head1]['k'] === true){
+            if (headElm[0] === location){
                 break
             }
+            
         } else {
-            arr.push(arr[head1])
+            newPriorities.push(headElm)
         }
-        
-        head1++
+            
+        head += 1;
     }
-    
-    return head2
+        
+    return result;
 }
